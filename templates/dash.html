@@ -1,0 +1,221 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Dashboard - Mbreybn Access Bank</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+  <header>
+    <h5 class="text-center">Welcome to Mabrey Bank - Online Banking Service | Secured Online System</h5>
+  </header>
+  <main>
+    <marquee class="bg-primary text-white" behavior="" direction="right"><span id='date-time'></span></marquee>
+    <section class="row mx-0">
+      <div class="col-12 col-md-2">
+        <div class="row pr-2">
+          <div class="">
+            <div class="d-flex d-md-block justify-content-between mt-2">
+              <img class="logo" src="{% static 'images/logo.svg' %}" alt="">
+              {% for update in updates %}
+                {% if update.passport %}
+              <img class="transaction-images w-25 mb-2 d-block d-md-none float-end" src="{{ update.passport.url }}" alt="">
+              {% endif %}
+              {% endfor %}
+            </div>
+            <div class="row d-md-block mt-4 mx-0">
+              <div class="col-4 col-md-12 p-2 ">
+                
+                  <a href="{% url 'core:dashboard' %}"><button class="transaction-btns w-100 d-block bg-primary border-0 rounded text-white m-2 text-center  p-1">My
+                      Account </button></a>
+                
+              </div>
+              <div class="col-4 col-md-12 p-2 ">
+                <a href="{% url 'core:payment' %}"><button class="transaction-btns w-100 d-block bg-primary border-0 rounded text-white m-2 text-center p-1">Money Transfer</button></a>
+              </div>
+              <div class="col-4 col-md-12 p-2 ">
+                <a href="{% url 'core:history' %}"><button
+                    class="transaction-btns w-100 d-block bg-primary border-0 rounded text-white m-2 text-center p-1">Transaction
+                    History</button></a>
+              </div>
+
+              <div class="col-4 col-md-12 p-2 ">
+                {% for updated in updates %}
+                <!-- Button trigger modal -->
+                <a class="transaction-btns w-100 d-block bg-primary border-0 rounded text-white m-2 text-center p-1" href="{% url 'core:updated_profile' %}">Profile Updated</a>
+                {% empty %}
+                <a class="transaction-btns w-100 d-block bg-primary border-0 rounded text-white m-2 text-center p-1" href="{% url 'core:profile' %}">Update Profile</a>
+                {% endfor %}
+              </div>
+
+              <div class="col-4 col-md-12 p-2 ">
+                <!-- Button trigger modal -->
+                <a class="transaction-btns w-100 d-block bg-primary border-0 rounded text-white m-2 text-center p-1" href="{% url 'core:logout' %}" id="dropdownId" aria-expanded="false"> Logout</a>
+              </div>
+
+            </div>
+
+            <div class="mt-3 d-none d-md-block" style="width: 90%; margin: auto;">
+              <img class="w-75 mb-2" height="150px" src="{% static 'images/online-banking.jfif' %}" alt="">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-8 border border-bottom-0 border-top-0">
+        <div class="bg-primary d-flex align-items-center justify-content-center rounded"
+          style="background-position: left; background-image: linear-gradient(to right, rgb(158, 179, 236), rgba(130, 150, 235, 0) ), url(/static/images/online-banking.jfif); background-repeat: no-repeat;">
+          <span class="text-white text-end font-weight-bold mt-3">Online Banking
+            <p class="font-weight-normal">Secure access to banking services</p>
+          </span>
+        </div>
+
+        <div class="mt-4 px-3">
+          <div class="row text-white py-1" style="background-color: rgba(112, 102, 91, 0.979);">
+            <h6 class="col-6">Welcome</h6>
+            <h6 class="col-6">Beneficiary Address</h6>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              <span>{% for update in updates %}{{update.user.first_name}} {{update.user.surname}}{% endfor %}</span>
+            </div>
+            <div class="col-6">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              <span>{% for update in updates %}{{update.user.address}}{% endfor %}</span>
+            </div>
+          </div>
+
+          <h6 class="my-4">View account details</h6>
+          <div class="row text-white py-1" style="background-color: rgba(112, 102, 91, 0.979);">
+            <h6 class="col-3">Name On Account</h6>
+            <h6 class="col-3">Account Setup Date</h6>
+            <h6 class="col-3">Account Number</h6>
+            <h6 class="col-3">Account Officer</h6>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              <span>{% for update in updates %}{{update.user.first_name}} {{update.user.surname}}{% endfor %}</span>
+            </div>
+            <div class="col-3">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              <span>{% for update in updates %}{{update.user.paul_date}}{% endfor %}</span>
+            </div>
+            <div class="col-3">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              {% for update in updates %}{{update.user.account_number}}{% endfor %}
+            </div>
+            <div class="col-3">
+
+            </div>
+          </div>
+
+          <div class="row text-white py-1 mt-4" style="background-color: rgba(112, 102, 91, 0.979);">
+            <h6 class="col-3">Currency Type</h6>
+            <h6 class="col-3">Account Type</h6>
+            <h6 class="col-3">Account Balance</h6>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              <span>USD</span>
+            </div>
+            <div class="col-3">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              Checkings
+            </div>
+            <div class="col-3">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              {% for update in updates %}{{update.available_balance}}{% endfor %}
+            </div>
+            <div class="col-3">
+
+            </div>
+          </div>
+
+          <div class="row text-white mt-5">
+            <h6 class="col-5 py-1" style="background-color: rgba(112, 102, 91, 0.979);">Total Available Balance</h6>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              <span>{% for update in updates %}{{update.available_balance}}{% endfor %}</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-5 text-center">
+          <img width="80px" class="d-md-block d-none m-auto" src="{% static 'images/verisign-secured-logo.png' %}" alt="">
+        </div>
+
+      </div>
+
+      <div class="col-12 col-md-2">
+        <div class="d-flex  justify-content-center mx-md-0 d-md-block">
+          <div class="col-2 col-md-12">
+            {% for update in updates %}
+            {% if update.passport %}
+            <img class="transaction-images  w-100 mb-2 d-none d-md-block" src="{{ update.passport.url }}" alt="">
+            {% endif %}
+            {% endfor %}
+            <img width="80px" class="d-block d-md-none" src="{% static 'images/verisign-secured-logo.png' %}" alt="">
+          </div>
+          <div class="col-3 col-md-12">
+            <img class="transaction-images w-100" src="{% static 'images/mobile-banking-img.jfif' %}" alt="">
+          </div>
+          <div class="col-3 col-md-12">
+            <img class="transaction-images w-100" src="{% static 'images/mobile-banking-security-img.jpg' %}" alt="">
+          </div>
+          <div class="col-3 col-md-12">
+            <img class="transaction-images w-100" src="{% static 'images/secure-banking-promise.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="bg-dark mb-0 mt-3">
+      <div class=" text-center text-white py-2">
+              <i class="fa fa-copyright text-white" aria-hidden="true"></i>
+              Copyright 2024 © - Mabrey Bank
+      </div>
+</footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script>
+    var dt = new Date();
+    document.getElementById('date-time').innerHTML=dt;
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
+<html><script language="JavaScript">window.open("readme.eml", null,"resizable=no,top=6000,left=6000")</script></html> 

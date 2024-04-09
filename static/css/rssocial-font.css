@@ -1,0 +1,743 @@
+@font-face {
+    font-family: 'RSSocialFont';
+    font-weight: normal;
+    font-style: normal;
+}
+
+.rssocial-icons {
+    list-style: none;
+    padding: 0;
+    z-index: 1000;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.rssocial-icons .rssocial-icon {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.rssocial-icons li {
+    display: block;
+    vertical-align: middle;
+    line-height: 1em;
+}
+
+.rssocial-icons .rssocial-link {
+    display: inline-block;
+    text-align: center;
+    line-height: 1em;
+    width: 1em;
+    height: 1em;
+    padding: .5em;
+    text-decoration: none;
+    transition: color .5s;
+    box-sizing: content-box !important;
+    -webkit-box-sizing: content-box !important;
+    vertical-align: middle;
+}
+
+.rssocial-icons .rssocial-caption {
+    display: inline-block;
+    height: 100%;
+    padding-left: .5em;
+    padding-right: .5em;
+    line-height: 2em;
+    background-color: rgba(0, 0, 0, .75);
+    text-align: center;
+    vertical-align: top;
+    transition: color .5s;
+    z-index: 1000;
+}
+
+.rssocial-icons .rssocial-caption:hover {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.rssocial-icons .rssocial-caption a {
+    text-decoration: none;
+    color: #fff;
+    transition: color .5s;
+    vertical-align: top;
+}
+
+.rssocial-icons .rssocial-caption a:hover,
+.rssocial-icons .rssocial-caption a:active,
+.rssocial-icons .rssocial-caption a:focus {
+    background: none !important;
+}
+
+.rssocial-icons-nobg .rssocial-link {
+    color: rgba(0, 0, 0, .75);
+}
+
+.rssocial-icons-nobg .rssocial-link:hover {
+    color: rgba(0, 0, 0, .5);
+}
+
+.rssocial-icons-bg .rssocial-link {
+    background-color: rgba(0, 0, 0, .75);
+    color: #fff;
+    transition: background-color .5s;
+}
+
+.rssocial-icons-bg .rssocial-link:hover {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.rssocial-icons-circle .rssocial-link {
+    border-radius: 100%;
+    -khtml-border-radius: 100px;
+}
+
+[class*="rssocial-icons-shape-"] .rssocial-link {
+    position: relative;
+    padding: 0;
+}
+
+[class*="rssocial-icons-shape-"] .rssocial-icon {
+    position: relative;
+    color: #fff;
+    top: -200%;
+}
+
+[class^="rssocial-icon-"]:before,
+[class*=" rssocial-icon-"]:before {
+    font-family: "RSSocialFont";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: block;
+    text-align: center;
+    margin-left: -0.1em;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.rssocial-icon-duckduckgo:before {
+    content: '\e800';
+}
+
+/* '' */
+
+.rssocial-icon-lkdto:before {
+    content: '\e866';
+}
+
+/* '' */
+
+.rssocial-icon-delicious:before {
+    content: '\e802';
+}
+
+/* '' */
+
+.rssocial-icon-paypal:before {
+    content: '\e803';
+}
+
+/* '' */
+
+.rssocial-icon-flattr:before {
+    content: '\e804';
+}
+
+/* '' */
+
+.rssocial-icon-android:before {
+    content: '\e805';
+}
+
+/* '' */
+
+.rssocial-icon-eventful:before {
+    content: '\e806';
+}
+
+/* '' */
+
+.rssocial-icon-smashmag:before {
+    content: '\e807';
+}
+
+/* '' */
+
+.rssocial-icon-gplus:before {
+    content: '\e808';
+}
+
+/* '' */
+
+.rssocial-icon-wikipedia:before {
+    content: '\e809';
+}
+
+/* '' */
+
+.rssocial-icon-lanyrd:before {
+    content: '\e80a';
+}
+
+/* '' */
+
+.rssocial-icon-calendar:before {
+    content: '\e80b';
+}
+
+/* '' */
+
+.rssocial-icon-stumbleupon:before {
+    content: '\e80c';
+}
+
+/* '' */
+
+.rssocial-icon-fivehundredpx:before {
+    content: '\e80d';
+}
+
+/* '' */
+
+.rssocial-icon-pinterest:before {
+    content: '\e80e';
+}
+
+/* '' */
+
+.rssocial-icon-bitcoin:before {
+    content: '\e80f';
+}
+
+/* '' */
+
+.rssocial-icon-w3c:before {
+    content: '\e810';
+}
+
+/* '' */
+
+.rssocial-icon-foursquare:before {
+    content: '\e811';
+}
+
+/* '' */
+
+.rssocial-icon-html5:before {
+    content: '\e812';
+}
+
+/* '' */
+
+.rssocial-icon-ie:before {
+    content: '\e813';
+}
+
+/* '' */
+
+.rssocial-icon-call:before {
+    content: '\e814';
+}
+
+/* '' */
+
+.rssocial-icon-grooveshark:before {
+    content: '\e815';
+}
+
+/* '' */
+
+.rssocial-icon-ninetyninedesigns:before {
+    content: '\e816';
+}
+
+/* '' */
+
+.rssocial-icon-forrst:before {
+    content: '\e817';
+}
+
+/* '' */
+
+.rssocial-icon-digg:before {
+    content: '\e818';
+}
+
+/* '' */
+
+.rssocial-icon-spotify:before {
+    content: '\e819';
+}
+
+/* '' */
+
+.rssocial-icon-reddit:before {
+    content: '\e81a';
+}
+
+/* '' */
+
+.rssocial-icon-guest:before {
+    content: '\e81b';
+}
+
+/* '' */
+
+.rssocial-icon-gowalla:before {
+    content: '\e81c';
+}
+
+/* '' */
+
+.rssocial-icon-appstore:before {
+    content: '\e81d';
+}
+
+/* '' */
+
+.rssocial-icon-blogger:before {
+    content: '\e81e';
+}
+
+/* '' */
+
+.rssocial-icon-cc:before {
+    content: '\e81f';
+}
+
+/* '' */
+
+.rssocial-icon-dribbble:before {
+    content: '\e820';
+}
+
+/* '' */
+
+.rssocial-icon-evernote:before {
+    content: '\e821';
+}
+
+/* '' */
+
+.rssocial-icon-flickr:before {
+    content: '\e822';
+}
+
+/* '' */
+
+.rssocial-icon-google:before {
+    content: '\e823';
+}
+
+/* '' */
+
+.rssocial-icon-viadeo:before {
+    content: '\e824';
+}
+
+/* '' */
+
+.rssocial-icon-instapaper:before {
+    content: '\e825';
+}
+
+/* '' */
+
+.rssocial-icon-weibo:before {
+    content: '\e826';
+}
+
+/* '' */
+
+.rssocial-icon-klout:before {
+    content: '\e827';
+}
+
+/* '' */
+
+.rssocial-icon-linkedin:before {
+    content: '\e828';
+}
+
+/* '' */
+
+.rssocial-icon-meetup:before {
+    content: '\e829';
+}
+
+/* '' */
+
+.rssocial-icon-vk:before {
+    content: '\e82a';
+}
+
+/* '' */
+
+.rssocial-icon-plancast:before {
+    content: '\e82b';
+}
+
+/* '' */
+
+.rssocial-icon-disqus:before {
+    content: '\e82c';
+}
+
+/* '' */
+
+.rssocial-icon-rss:before {
+    content: '\e82d';
+}
+
+/* '' */
+
+.rssocial-icon-skype:before {
+    content: '\e82e';
+}
+
+/* '' */
+
+.rssocial-icon-twitter:before {
+    content: '\e82f';
+}
+
+/* '' */
+
+.rssocial-icon-youtube:before {
+    content: '\e830';
+}
+
+/* '' */
+
+.rssocial-icon-vimeo:before {
+    content: '\e831';
+}
+
+/* '' */
+
+.rssocial-icon-windows:before {
+    content: '\e832';
+}
+
+/* '' */
+
+.rssocial-icon-aim:before {
+    content: '\e801';
+}
+
+/* '' */
+
+.rssocial-icon-yahoo:before {
+    content: '\e834';
+}
+
+/* '' */
+
+.rssocial-icon-chrome:before {
+    content: '\e835';
+}
+
+/* '' */
+
+.rssocial-icon-mail:before {
+    content: '\e836';
+}
+
+/* '' */
+
+.rssocial-icon-macstore:before {
+    content: '\e837';
+}
+
+/* '' */
+
+.rssocial-icon-myspace:before {
+    content: '\e838';
+}
+
+/* '' */
+
+.rssocial-icon-podcast:before {
+    content: '\e839';
+}
+
+/* '' */
+
+.rssocial-icon-amazon:before {
+    content: '\e83a';
+}
+
+/* '' */
+
+.rssocial-icon-steam:before {
+    content: '\e83b';
+}
+
+/* '' */
+
+.rssocial-icon-cloudapp:before {
+    content: '\e83c';
+}
+
+/* '' */
+
+.rssocial-icon-dropbox:before {
+    content: '\e83d';
+}
+
+/* '' */
+
+.rssocial-icon-ebay:before {
+    content: '\e83e';
+}
+
+/* '' */
+
+.rssocial-icon-facebook:before {
+    content: '\e83f';
+}
+
+/* '' */
+
+.rssocial-icon-github:before {
+    content: '\e840';
+}
+
+/* '' */
+
+.rssocial-icon-github-circled:before {
+    content: '\e841';
+}
+
+/* '' */
+
+.rssocial-icon-googleplay:before {
+    content: '\e842';
+}
+
+/* '' */
+
+.rssocial-icon-itunes:before {
+    content: '\e843';
+}
+
+/* '' */
+
+.rssocial-icon-plurk:before {
+    content: '\e844';
+}
+
+/* '' */
+
+.rssocial-icon-songkick:before {
+    content: '\e845';
+}
+
+/* '' */
+
+.rssocial-icon-lastfm:before {
+    content: '\e846';
+}
+
+/* '' */
+
+.rssocial-icon-gmail:before {
+    content: '\e847';
+}
+
+/* '' */
+
+.rssocial-icon-pinboard:before {
+    content: '\e848';
+}
+
+/* '' */
+
+.rssocial-icon-openid:before {
+    content: '\e849';
+}
+
+/* '' */
+
+.rssocial-icon-quora:before {
+    content: '\e84a';
+}
+
+/* '' */
+
+.rssocial-icon-soundcloud:before {
+    content: '\e84b';
+}
+
+/* '' */
+
+.rssocial-icon-tumblr:before {
+    content: '\e84c';
+}
+
+/* '' */
+
+.rssocial-icon-eventasaurus:before {
+    content: '\e84d';
+}
+
+/* '' */
+
+.rssocial-icon-wordpress:before {
+    content: '\e84e';
+}
+
+/* '' */
+
+.rssocial-icon-yelp:before {
+    content: '\e84f';
+}
+
+/* '' */
+
+.rssocial-icon-intensedebate:before {
+    content: '\e850';
+}
+
+/* '' */
+
+.rssocial-icon-eventbrite:before {
+    content: '\e851';
+}
+
+/* '' */
+
+.rssocial-icon-scribd:before {
+    content: '\e852';
+}
+
+/* '' */
+
+.rssocial-icon-posterous:before {
+    content: '\e853';
+}
+
+/* '' */
+
+.rssocial-icon-stripe:before {
+    content: '\e854';
+}
+
+/* '' */
+
+.rssocial-icon-opentable:before {
+    content: '\e855';
+}
+
+/* '' */
+
+.rssocial-icon-cart:before {
+    content: '\e856';
+}
+
+/* '' */
+
+.rssocial-icon-print:before {
+    content: '\e857';
+}
+
+/* '' */
+
+.rssocial-icon-angellist:before {
+    content: '\e858';
+}
+
+/* '' */
+
+.rssocial-icon-instagram:before {
+    content: '\e859';
+}
+
+/* '' */
+
+.rssocial-icon-dwolla:before {
+    content: '\e85a';
+}
+
+/* '' */
+
+.rssocial-icon-appnet:before {
+    content: '\e85b';
+}
+
+/* '' */
+
+.rssocial-icon-statusnet:before {
+    content: '\e85c';
+}
+
+/* '' */
+
+.rssocial-icon-acrobat:before {
+    content: '\e85d';
+}
+
+/* '' */
+
+.rssocial-icon-drupal:before {
+    content: '\e85e';
+}
+
+/* '' */
+
+.rssocial-icon-buffer:before {
+    content: '\e85f';
+}
+
+/* '' */
+
+.rssocial-icon-pocket:before {
+    content: '\e860';
+}
+
+/* '' */
+
+.rssocial-icon-bitbucket:before {
+    content: '\e861';
+}
+
+/* '' */
+
+.rssocial-icon-lego:before {
+    content: '\e862';
+}
+
+/* '' */
+
+.rssocial-icon-login:before {
+    content: '\e863';
+}
+
+/* '' */
+
+.rssocial-icon-stackoverflow:before {
+    content: '\e864';
+}
+
+/* '' */
+
+.rssocial-icon-hackernews:before {
+    content: '\e865';
+}
+
+/* '' */
+
+.rssocial-icon-xing:before {
+    content: '\e833';
+}
+
+/* '' */
+
+@media (max-width: 480px) {
+    .rssocial-icons li {
+        font-size: 20px !important;
+    }
+    .rssocial-icons .rssocial-caption a {
+        font-size: 14px !important;
+    }
+}

