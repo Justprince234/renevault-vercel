@@ -1,0 +1,146 @@
+div.template {
+    display: none;
+}
+
+div.instance,
+div.instancelike {
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 40px;
+    background: #efefef;
+    padding: 15px;
+    position: relative;
+}
+
+div.instance div.instance {
+    border: 0;
+    padding: 0;
+}
+
+div.noinstancestyles .instance {
+    border: 0;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+}
+
+div.noinstancestyles div.instance-inner {
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 40px;
+    background: #efefef;
+    padding: 15px;
+    position: relative;
+}
+
+div.extras {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+input {
+    max-width: 450px;
+}
+
+#content table input,
+#content table select {
+    margin-bottom: 0;
+}
+
+table.noborder tr td {
+    border: 0;
+}
+
+a.remove-instance {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.bo-chain-instance-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+ol li {
+    list-style-type: lower-roman;
+}
+
+.bo-keytitle {
+    color: #bbb;
+    margin-bottom: 15px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-top: 1px;
+}
+
+input[type="checkbox"] {
+    margin-top: 3px;
+}
+
+.fr-radio-csb {
+    float: right;
+}
+
+@media (max-width: 960px) {
+    body #content {
+        width: auto;
+        width: auto !important;
+    }
+    .row-fluid [class*="span"] {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    input.span12 {
+        width: auto;
+    }
+    div.extras {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    select {
+        width: auto;
+        max-width: 100%;
+    }
+    #header .container,
+    #content .container,
+    #footer .container {
+        width: auto;
+    }
+    #footer {
+        height: auto;
+    }
+    #motto {
+        margin: 0;
+    }
+}
+
+@media (max-width: 425px) {
+    .fr-radio-csb {
+        float: none;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {}
+
+@media (min-width: 768px) {
+    #flexwrap {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+    #flexwrap #content {
+        flex: 1 0 auto;
+    }
+    #flexwrap #footer {
+        flex-shrink: 0;
+        height: auto;
+        margin-top: auto;
+    }
+}
